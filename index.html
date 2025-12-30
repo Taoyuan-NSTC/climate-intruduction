@@ -29,58 +29,44 @@
             max-width: 100%; 
             border-radius: 8px; 
             border: 1px solid #ffcdd2; 
-            cursor: zoom-in; /* 滑鼠移上去顯示放大鏡 */
+            cursor: zoom-in;
             transition: 0.3s;
         }
         .image-box img:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         .caption { font-size: 0.85rem; color: #7f8c8d; margin-top: 5px; }
 
-        /* 小方框樣式 */
-        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
-        .info-box { background: #fffafa; padding: 25px; border-radius: 12px; border: 1px solid #ffcdd2; }
-        .info-box-title { color: #b71c1c; font-weight: bold; margin-bottom: 10px; display: block; }
+        /* 主題二、三小方框樣式 */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+        .info-box { background: #fffafa; padding: 25px; border-radius: 12px; border: 1px solid #ffcdd2; text-align: center; }
+        .info-box-left { text-align: left; }
+        .info-box-title { color: #b71c1c; font-weight: bold; margin-bottom: 10px; display: block; font-size: 1.1rem; }
 
-        /* 未來推估方框 */
-        .future-box { background: #b71c1c; color: white; padding: 25px; border-radius: 12px; text-align: center; }
-        .future-item { display: inline-block; margin: 10px 20px; font-size: 1.1rem; }
-        .future-value { font-size: 1.6rem; font-weight: bold; display: block; }
+        /* 主題三專屬顏色 */
+        .future-box { border-top: 4px solid #b71c1c; }
+        .future-value { font-size: 1.8rem; font-weight: bold; color: #b71c1c; display: block; margin-top: 5px; }
 
-        /* 資料來源區 */
-        .source-content { font-size: 0.95rem; color: #5d4037; text-align: justify; background: #f9f9f9; padding: 20px; border-radius: 8px; }
-        .btn-download { display: inline-block; margin-top: 15px; padding: 12px 30px; background: #d32f2f; color: white !important; text-decoration: none; border-radius: 30px; font-weight: bold; }
-
-        /* --- 放大鏡彈出視窗 (Modal) CSS --- */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            padding-top: 50px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            cursor: zoom-out;
+        /* 資料來源與下載區 */
+        .source-content { font-size: 0.95rem; color: #5d4037; text-align: justify; background: #f9f9f9; padding: 25px; border-radius: 12px; }
+        .download-divider { border-top: 2px dashed #ffcdd2; margin: 30px 0; }
+        .download-section { text-align: center; }
+        .btn-download { 
+            display: inline-block; 
+            padding: 15px 40px; 
+            background: #d32f2f; 
+            color: white !important; 
+            text-decoration: none; 
+            border-radius: 35px; 
+            font-weight: bold; 
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(211, 47, 47, 0.3);
         }
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 90%;
-            max-height: 85vh;
-            border-radius: 5px;
-            animation: zoom 0.3s;
-        }
+        .btn-download:hover { background: #b71c1c; transform: translateY(-2px); box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4); }
+
+        /* 放大視窗 (Modal) */
+        .modal { display: none; position: fixed; z-index: 999; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); cursor: zoom-out; }
+        .modal-content { margin: auto; display: block; max-width: 90%; max-height: 85vh; animation: zoom 0.3s; }
         @keyframes zoom { from {transform:scale(0)} to {transform:scale(1)} }
-        
-        .close-btn {
-            position: absolute;
-            top: 20px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-        }
 
         @media (max-width: 600px) { .container { padding: 20px; } }
     </style>
@@ -93,19 +79,19 @@
 
     <section>
         <h2>主題一、地理位置與氣候特徵</h2>
-        <p>桃園市位於臺灣本島西北部，地形豐富 [cite: 35]，夏季潮濕悶熱、冬季濕冷，年降雨量約在 1,500 至 2,000 毫米間；山區則在 2,000 至 4,000 毫米，冬季受東北季風影響，陰雨天氣雨日較多，夏季則常有午後對流雷陣雨；因此降雨量以夏季較多，冬季較少，但降雨日數反以冬季略多 [cite: 37]。桃園市整體而言無明顯乾季，但因降水不均，豐枯水期降水量差異較大，特有埤塘文化以保存灌溉用水資源 [cite: 37]。</p>
+        <p>桃園市位於臺灣本島西北部，地形豐富，夏季潮濕悶熱、冬季濕冷，年降雨量約在 1,500 至 2,000 毫米間；山區則在 2,000 至 4,000 毫米，冬季受東北季風影響，陰雨天氣雨日較多，夏季則常有午後對流雷陣雨；因此降雨量以夏季較多，冬季較少，但降雨日數反以冬季略多 [cite: 35, 37]。桃園市整體而言無明顯乾季，但因降水不均，豐枯水期降水量差異較大，特有埤塘文化以保存灌溉用水資源 [cite: 37]。</p>
         <div class="image-row">
             <div class="image-box">
                 <img src="topo_map.png" alt="地形圖" onclick="openModal(this)">
-                <div class="caption">圖：桃園市地形分布圖 (點擊放大)</div>
+                <div class="caption">圖：桃園市地形圖 (點擊放大) [cite: 39]</div>
             </div>
             <div class="image-box">
-                <img src="avg_temp.png" alt="年平均溫度圖" onclick="openModal(this)">
-                <div class="caption">圖：年平均溫度分布 (點擊放大)</div>
+                <img src="avg_temp.png" alt="年平均溫度" onclick="openModal(this)">
+                <div class="caption">圖：年平均溫度圖 (點擊放大) [cite: 53]</div>
             </div>
             <div class="image-box">
-                <img src="avg_rain.png" alt="年平均降雨量圖" onclick="openModal(this)">
-                <div class="caption">圖：年平均降雨量分布 (點擊放大)</div>
+                <img src="avg_rain.png" alt="年平均降雨量" onclick="openModal(this)">
+                <div class="caption">圖：年平均降雨量圖 (點擊放大) [cite: 71]</div>
             </div>
         </div>
     </section>
@@ -114,23 +100,23 @@
         <h2>主題二、過去 60 年的觀測 (1960-2020)</h2>
         <p>桃園市年平均溫度為 <span class="highlight">20.5℃</span>；年降雨量為 <span class="highlight">1,817.6 毫米</span> (中位數) [cite: 346]。</p>
         <div class="info-grid">
-            <div class="info-box">
-                <span class="info-box-title">長期觀測 (1960-2020)</span>
-                過去 60 年間，桃園年平均溫度每十年增加 <span class="highlight">0.09°C</span>，年降雨量增加 <span class="highlight">24.1 毫米</span> [cite: 347]。
+            <div class="info-box info-box-left">
+                <span class="info-box-title">過去 60 年間 (1960-2020)</span>
+                桃園年平均溫度每十年增加 <span class="highlight">0.09°C</span>，年降雨量增加 <span class="highlight">24.1 毫米</span> [cite: 347]。
             </div>
-            <div class="info-box">
-                <span class="info-box-title">加速趨勢 (1991-2020)</span>
-                然而，近 30 年的增溫速度明顯加快，桃園年平均溫度每十年增加 <span class="highlight">0.16℃</span>，年降雨量增加 <span class="highlight">42.0 毫米</span> [cite: 348]。
+            <div class="info-box info-box-left">
+                <span class="info-box-title">近 30 年趨勢 (1991-2020)</span>
+                增溫速度明顯加快，桃園年平均溫度每十年增加 <span class="highlight">0.16℃</span>，年降雨量增加 <span class="highlight">42.0 毫米</span> [cite: 348]。
             </div>
         </div>
         <div class="image-row">
             <div class="image-box">
                 <img src="temp_trend.png" alt="溫度趨勢" onclick="openModal(this)">
-                <div class="caption">圖：年平均溫度趨勢變化 (點擊放大)</div>
+                <div class="caption">圖：年平均溫度趨勢變化 [cite: 349]</div>
             </div>
             <div class="image-box">
                 <img src="rain_trend.png" alt="降雨趨勢" onclick="openModal(this)">
-                <div class="caption">圖：年平均降雨量趨勢變化 (點擊放大)</div>
+                <div class="caption">圖：年降雨量趨勢變化 [cite: 374]</div>
             </div>
         </div>
     </section>
@@ -138,18 +124,18 @@
     <section>
         <h2>主題三、未來升溫 2°C 情境下的推估 (2015-2100)</h2>
         <p>在全球暖化 2°C 的情境下，推估桃園將面臨以下挑戰 [cite: 500]：</p>
-        <div class="future-box">
-            <div class="future-item">
-                年平均溫度
-                <span class="future-value">+ 1.2°C [cite: 505]</span>
+        <div class="info-grid">
+            <div class="info-box future-box">
+                年平均溫度預計增加
+                <span class="future-value">+ 1.2°C</span> [cite: 505]
             </div>
-            <div class="future-item">
-                年高溫 36°C 天數
-                <span class="future-value">+ 10.0 天 [cite: 505]</span>
+            <div class="info-box future-box">
+                年高溫 36°C 天數增加
+                <span class="future-value">+ 10.0 天</span> [cite: 505]
             </div>
-            <div class="future-item">
-                年最大一日降雨量
-                <span class="future-value">+ 11.6% [cite: 507]</span>
+            <div class="info-box future-box">
+                年最大一日降雨量增加
+                <span class="future-value">+ 11.6%</span> [cite: 507]
             </div>
         </div>
     </section>
@@ -157,23 +143,26 @@
     <section>
         <h2>主題四、資料來源</h2>
         <div class="source-content">
-            <p>資料來源自「縣市氣候變遷概述2024」，國科會「臺灣氣候變遷推估資訊與調適知識平台計畫(TCCIP)」 [cite: 28]。</p>
-            <p>國家科學及技術委員會所推動之「臺灣氣候變遷推估資訊與調適知識平台計畫 (TCCIP)」長期進行氣候變遷本土資料產製與應用推廣 [cite: 27]，與交通部中央氣象署合作出版「縣市氣候變遷概述2024」 [cite: 27]，以全國 22 個縣市為對象，透過氣象科學數據的整理與圖資繪製，概要地敘述一個縣市的氣候資訊 [cite: 27]。</p>
-            <p>若需參考詳細科學數據與分析，請下載完整報告：</p>
-            <a href="pdfs/縣市氣候變遷概述2024_桃園市.pdf" target="_blank" class="btn-download">
-                <i class="fas fa-file-pdf"></i> 下載完整報告全文
-            </a>
+            <p>資料來源自「縣市氣候變遷概述 2024」，國科會「臺灣氣候變遷推估資訊與調適知識平台計畫 (TCCIP)」 [cite: 3, 5]。</p>
+            <p>國家科學及技術委員會所推動之「臺灣氣候變遷推估資訊與調適知識平台計畫 (TCCIP)」長期進行氣候變遷本土資料產製與應用推廣 [cite: 27]，與交通部中央氣象署合作出版「縣市氣候變遷概述 2024」 [cite: 7]，以全國 22 個縣市為對象，透過氣象科學數據的整理與圖資繪製 [cite: 27]，概要地敘述一個縣市的氣候資訊，讓使用者可以快速掌握該縣市過去、現在與未來的氣候狀況與變化趨勢 [cite: 27]。</p>
+            
+            <div class="download-divider"></div>
+            
+            <div class="download-section">
+                <p>若需參考詳細科學數據與分析，請下載完整報告：</p>
+                <a href="pdfs/縣市氣候變遷概述2024_桃園市.pdf" target="_blank" class="btn-download">
+                    <i class="fas fa-file-pdf"></i> 下載完整報告全文
+                </a>
+            </div>
         </div>
     </section>
 </div>
 
 <div id="imgModal" class="modal" onclick="this.style.display='none'">
-    <span class="close-btn">&times;</span>
     <img class="modal-content" id="fullImg">
 </div>
 
 <script>
-    // 點擊圖片顯示放大視窗
     function openModal(imgElement) {
         var modal = document.getElementById("imgModal");
         var modalImg = document.getElementById("fullImg");
